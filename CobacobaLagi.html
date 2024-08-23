@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        section {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap; /* Mengizinkan baris baru jika diperlukan */
+            margin: 20px 0;
+        }
+
+        .container {
+            display: flex;
+            position: relative;
+            width: 300px; /* Atur lebar default */
+            height: 500px; /* Atur tinggi default */
+            border-radius: 10px;
+            margin: 10px; /* Jarak antar container */
+            justify-content: center;
+            transition: transform 0.5s ease;
+            background-color: #d3d3d3; /* Tambahkan warna abu muda */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+        }
+
+        .layer {
+            position: absolute;
+            border-radius: 10px;
+            width: 80%;
+            height: auto;
+            object-fit: cover;
+            transition: z-index 2s, transform 0.5s ease, box-shadow 0.5s ease;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
+        }
+
+        .layer1 {
+            top: 27%;
+            width: 70%;
+            z-index: 3; /* Tetap berada di atas */
+        }
+
+        .layer2 {
+            top: 20%;
+            right: 5%;
+            width: 35%;
+            z-index: 2;
+            transform: rotate(10deg);
+            animation: moveAnimationTopBack 0.5s forwards, z-IndexA 0.3s forwards;
+        }
+
+        .layer3 {
+            bottom: 23%;
+            left: 5%;
+            width: 35%;
+            z-index: 2;
+            transform: rotate(-5deg);
+            animation: moveAnimationBotBack 0.5s forwards, z-IndexA 0.3s forwards;
+        }
+
+        @keyframes moveAnimationTop {
+            0% {
+                transform: scale(1) rotate(0deg) translate(0px, 0px);
+            }
+            50% {
+                transform: scale(1.05) rotate(40deg) translate(30px, -90px);
+            }
+            100% {
+                transform: scale(1.1) rotate(20deg) translate(30px, -30px);
+            }
+        }
+        
+        @keyframes moveAnimationTopBack {
+            0% {
+                transform: scale(1.1) rotate(20deg) translate(30px, -30px);
+            }
+            50% {
+                transform: scale(1.05) rotate(40deg) translate(30px, -90px);
+            }
+            100% {
+                transform: scale(1) rotate(10deg) translate(30px, -30px);
+            }
+        }
+
+        @keyframes moveAnimationBot {
+            0% {
+                transform: scale(1) rotate(0deg) translate(0px, 0px);
+            }
+            50% {
+                transform: scale(1.05) rotate(10deg) translate(-30px, 90px);
+            }
+            100% {
+                transform: scale(1.1) rotate(-15deg) translate(-30px, 30px);
+            }
+        }
+        
+        @keyframes moveAnimationBotBack {
+            0% {
+                transform: scale(1.1) rotate(-15deg) translate(-30px, 30px);
+            }
+            50% {
+                transform: scale(1.05) rotate(10deg) translate(-30px, 90px);
+            }
+            100% {
+                transform: scale(1) rotate(-5deg) translate(-30px, 30px);
+            }
+        }
+
+        @keyframes z-IndexA {
+            0% {
+                z-index: 3;
+            }
+            100% {
+                z-index: 2;
+            }
+        }
+
+        /* Mengubah layer2 ketika container di-hover */
+        .container:hover .layer2 {
+            animation: moveAnimationTop 1s forwards;
+            z-index: 3; /* Naikkan z-index menjadi 3 */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Perbesar bayangan saat hover */
+        }
+
+        .container:hover .layer3 {
+            z-index: 3; /* Naikkan z-index menjadi 3 */
+            animation: moveAnimationBot 1s forwards;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Perbesar bayangan saat hover */
+        }
+
+        .container:hover .layer1 {
+            transform: scale(1.1);
+            box-shadow: 0 8px 16px rgba(0, 0, 3, 3); /* Perbesar bayangan saat hover */
+        }
+
+        /* Media query untuk iPhone 13 Pro Max */
+        @media (max-width: 430px) {
+            section {
+                width: 100%;
+            }
+    </style>
+</head>
+<body>
+    <section>
+        <div class="container">
+            <img src="1.png" alt="Layer 1" class="layer layer1">
+            <img src="2.png" alt="Layer 2" class="layer layer2">
+            <img src="3.png" alt="Layer 3" class="layer layer3">
+        </div>
+        <div class="container">
+            <img src="1.png" alt="Layer 1" class="layer layer1">
+            <img src="2.png" alt="Layer 2" class="layer layer2">
+            <img src="3.png" alt="Layer 3" class="layer layer3">
+        </div>
+        <div class="container">
+            <img src="1.png" alt="Layer 1" class="layer layer1">
+            <img src="2.png" alt="Layer 2" class="layer layer2">
+            <img src="3.png" alt="Layer 3" class="layer layer3">
+        </div>
+    </section>
+</body>
+</html>
