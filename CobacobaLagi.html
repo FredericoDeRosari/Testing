@@ -31,7 +31,7 @@
             width: 80%;
             height: auto;
             object-fit: cover;
-            transition: z-index 2s, transform 0.5s ease, box-shadow 0.5s ease;
+            transition: z-index 1s, transform 0.5s ease, box-shadow 0.5s ease;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Tambahkan bayangan */
         }
 
@@ -61,12 +61,13 @@
 
         @keyframes moveAnimationTop {
             0% {
-                transform: scale(1) rotate(10deg) translate(30px, -30px);
+                transform: scale(1) rotate(10deg) translate(0px, -0px);
             }
             50% {
-                transform: scale(1.05) rotate(40deg) translate(30px, -90px);
+                transform: scale(1.05) rotate(35deg) translate(30px, -110px);
             }
             100% {
+                z-index: 3; /* Naikkan z-index menjadi 3 */
                 transform: scale(1.1) rotate(20deg) translate(30px, -30px);
             }
         }
@@ -76,21 +77,22 @@
                 transform: scale(1.1) rotate(20deg) translate(30px, -30px);
             }
             50% {
-                transform: scale(1.05) rotate(40deg) translate(30px, -90px);
+                transform: scale(1.05) rotate(35deg) translate(30px, -110px);
             }
             100% {
-                transform: scale(1) rotate(10deg) translate(30px, -30px);
+                transform: scale(1) rotate(10deg) translate(0px, 0px);
             }
         }
 
         @keyframes moveAnimationBot {
             0% {
-                transform: scale(1) rotate(-5deg) translate(-30px, 30px);
+                transform: scale(1) rotate(-5deg) translate(0px, 0px);
             }
             50% {
-                transform: scale(1.05) rotate(10deg) translate(-30px, 90px);
+                transform: scale(1.05) rotate(15deg) translate(-30px, 110px);
             }
             100% {
+                z-index: 3; /* Naikkan z-index menjadi 3 */
                 transform: scale(1.1) rotate(-15deg) translate(-30px, 30px);
             }
         }
@@ -100,10 +102,10 @@
                 transform: scale(1.1) rotate(-15deg) translate(-30px, 30px);
             }
             50% {
-                transform: scale(1.05) rotate(10deg) translate(-30px, 90px);
+                transform: scale(1.05) rotate(15deg) translate(-30px, 90px);
             }
             100% {
-                transform: scale(1) rotate(-5deg) translate(-30px, 30px);
+                transform: scale(1) rotate(-5deg) translate(0px, 0px);
             }
         }
 
@@ -119,12 +121,10 @@
         /* Mengubah layer2 ketika container di-hover */
         .container:hover .layer2 {
             animation: moveAnimationTop 1s forwards;
-            z-index: 3; /* Naikkan z-index menjadi 3 */
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Perbesar bayangan saat hover */
         }
 
         .container:hover .layer3 {
-            z-index: 3; /* Naikkan z-index menjadi 3 */
             animation: moveAnimationBot 1s forwards;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Perbesar bayangan saat hover */
         }
